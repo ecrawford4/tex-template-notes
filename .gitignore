@@ -1,4 +1,4 @@
-// ignore latex build files
+# ignore latex build files
 .aux
 .fdb_latexmk
 .fls
