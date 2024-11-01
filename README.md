@@ -45,7 +45,7 @@ sample code{
 \end{codeblock}
 ```
 
-Here is the output of these three examples:
+Here is the output of these three environments:
 
 ![output](assets/output.png)
 
