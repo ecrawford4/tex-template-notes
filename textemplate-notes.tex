@@ -63,6 +63,23 @@
 
 \newtcolorbox{definition}[1][]{colback=red!5!white, colframe=red!75!black, fonttitle=\bfseries, title=#1}
 
+\usepackage{listings} % Package to format code
+
+% Define a new environment called "codeblock" with a light gray background
+\newtcolorbox{codeblock}[1][]{colback=gray!10!white, colframe=gray!50!black, fonttitle=\bfseries, title=#1}
+
+% Define settings for the lstlisting package
+\lstset{
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!10}
+}
+
 \usepackage{makeidx} % Used to generate the index
 \makeindex % Generate the index which is printed at the end of the document
 
@@ -70,7 +87,7 @@
 %	BOOK META-INFORMATION
 %----------------------------------------------------------------------------------------
 
-\title{Notes Template} % Title of the book
+\title{Module 5 Notes} % Title of the book
 
 \author{Ethan Crawford} % Author
 
@@ -122,95 +139,24 @@ Copyright \copyright\ \the\year\ \thanklessauthor
 %----------------------------------------------------------------------------------------
 
 \cleardoublepage
-\chapter*{Introduction}% The asterisk leaves out this chapter from the table of contents
+\chapter{Bayesian Belief Networks}
 
-\begin{example}[Example Environment]
-This is an example of a custom environment created using the \texttt{tcolorbox} package. You can use this environment to highlight important information or examples in your document.
+\begin{example}[Example Title]
+    sample text
 \end{example}
 
-\begin{definition}[Definition Environment]
-    def
+\begin{definition}[Definition Title] 
+    sample text
 \end{definition}
 
-Citation example \cite{Tufte2001}, notice how the citation is in the margin. This is an example of how to add something to the index at the end of the document.\index{citation}
+\begin{codeblock}[Code Title]
+\begin{lstlisting}
+sample code{
+    sample.method(sample.getData);
+}
+\end{lstlisting}
+\end{codeblock}
 
-\newthought{Example of} the \texttt{newthought} command for starting new sections. Typography examples: \allcaps{all caps} and \smallcaps{small caps}.
-
-
-
-\section{Tables} \marginnote{This is a random margin note. Notice that there isn't a number preceding the note, and there is no number in the main text where this note was written. Use \texttt{sidenote} to use a number.}
-
-\lipsum[4]
-
-\begin{table} % Add the following just after the closing bracket on this line to specify a position for the table on the page: [h], [t], [b] or [p] - these mean: here, top, bottom and on a separate page, respectively
-\centering % Centers the table on the page, comment out to left-justify
-\begin{tabular}{l c c c c c} % The final bracket specifies the number of columns in the table along with left and right borders which are specified using vertical bars (|); each column can be left, right or center-justified using l, r or c. To specify a precise width, use p{width}, e.g. p{5cm}
-\toprule % Top horizontal line
-& \multicolumn{5}{c}{Growth Media} \\ % Amalgamating several columns into one cell is done using the \multicolumn command as seen on this line
-\cmidrule(l){2-6} % Horizontal line spanning less than the full width of the table - you can add (r) or (l) just before the opening curly bracket to shorten the rule on the left or right side
-Strain & 1 & 2 & 3 & 4 & 5\\ % Column names row
-\midrule % In-table horizontal line
-GDS1002 & 0.962 & 0.821 & 0.356 & 0.682 & 0.801\\ % Content row 1
-NWN652 & 0.981 & 0.891 & 0.527 & 0.574 & 0.984\\ % Content row 2
-PPD234 & 0.915 & 0.936 & 0.491 & 0.276 & 0.965\\ % Content row 3
-JSB126 & 0.828 & 0.827 & 0.528 & 0.518 & 0.926\\ % Content row 4
-JSB724 & 0.916 & 0.933 & 0.482 & 0.644 & 0.937\\ % Content row 5
-\midrule % In-table horizontal line
-\midrule % In-table horizontal line
-Average Rate & 0.920 & 0.882 & 0.477 & 0.539 & 0.923\\ % Summary/total row
-\bottomrule % Bottom horizontal line
-\end{tabular}
-\caption{Table caption text} % Table caption, can be commented out if no caption is required
-\label{tab:template} % A label for referencing this table elsewhere, references are used in text as \ref{label}
-\end{table}
-
-%----------------------------------------------------------------------------------------
-
-\mainmatter
-
-%----------------------------------------------------------------------------------------
-%	CHAPTER 1
-%----------------------------------------------------------------------------------------
-
-\chapter{General Notetaking}
-\label{ch:1}
-
-%------------------------------------------------
-
-\section{Section 1 - Fullwidth Environment Example}
-
-\begin{fullwidth}
-\lipsum[5]
-\end{fullwidth}
-
-\subsection{Subsection 1}
-
-\lipsum[6-7]
-
-\subsection{Subsection 2}
-
-\lipsum[7-8]
-
-%------------------------------------------------
-
-\section{Mathematics}
-
-\subsection{Subsection 1}
-
-\lipsum[9-10]
-
-\subsection{Subsection 2}
-
-\lipsum[11-12]
-
-%----------------------------------------------------------------------------------------
-%	CHAPTER 2
-%----------------------------------------------------------------------------------------
-
-\chapter{Custom Environments}
-\label{ch:2}
-
-\lipsum[13-20]
 
 %----------------------------------------------------------------------------------------
 
