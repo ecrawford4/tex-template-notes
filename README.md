@@ -14,7 +14,8 @@ sudo apt install texlive texlive-latex-extra latexmk
 
 ## Statement of Purpose
 
-This repository contains the LaTeX template I use to take notes in school. It is based off of a public book format: 
+This repository contains the LaTeX template I use to take notes in school. It is based off the Tufte-Style Book. More information about the template can be found below
+
 
 I added three custom environments: one for examples
 
@@ -46,4 +47,21 @@ sample code{
 
 Here is the output of these three examples:
 
-[output](assets/output.png)
+![output](assets/output.png)
+
+
+## Tufte-Style Book (Minimal Template)
+
+> LaTeX Template
+
+> Version 1.0 (5/1/13)
+
+> This template has been downloaded from: http://www.LaTeXTemplates.com
+
+> License: CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+
+### IMPORTANT NOTE:
+
+In addition to running BibTeX to compile the reference list from the .bib
+file, you will need to run MakeIndex to compile the index at the end of the
+document.
