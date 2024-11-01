@@ -56,6 +56,13 @@
 
 \newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage} % Command to insert a blank page
 
+\usepackage{tcolorbox} % Package to create colored boxes
+
+% Define a new environment called "example" with a light blue background
+\newtcolorbox{example}[1][]{colback=blue!10!white, colframe=blue!50!black, fonttitle=\bfseries, title=#1}
+
+\newtcolorbox{definition}[1][]{colback=red!5!white, colframe=red!75!black, fonttitle=\bfseries, title=#1}
+
 \usepackage{makeidx} % Used to generate the index
 \makeindex % Generate the index which is printed at the end of the document
 
@@ -115,7 +122,15 @@ Copyright \copyright\ \the\year\ \thanklessauthor
 %----------------------------------------------------------------------------------------
 
 \cleardoublepage
-\chapter*{Introduction} % The asterisk leaves out this chapter from the table of contents
+\chapter*{Introduction}% The asterisk leaves out this chapter from the table of contents
+
+\begin{example}[Example Environment]
+This is an example of a custom environment created using the \texttt{tcolorbox} package. You can use this environment to highlight important information or examples in your document.
+\end{example}
+
+\begin{definition}[Definition Environment]
+    def
+\end{definition}
 
 Citation example \cite{Tufte2001}, notice how the citation is in the margin. This is an example of how to add something to the index at the end of the document.\index{citation}
 
