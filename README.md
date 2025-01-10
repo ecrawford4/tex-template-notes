@@ -20,17 +20,19 @@ This repository contains the LaTeX template I use to take notes in school. It is
 I added three custom environments: one for examples
 
 ```LaTeX
+\examplebox{Example}{\lipsum[1]}
 ```
 
 one for definitions
 
 ```LaTeX
+\definitionbox{Definition}{\lipsum[2]}
 ```
 
 and one for code:
 
 ```LaTeX
-
+\codeblockbox{Code Block}{python}{assets/code/example.py}
 ```
 
 Here is the output of these three environments:
