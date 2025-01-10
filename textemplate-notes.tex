@@ -1,176 +1,155 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tufte-Style Book (Minimal Template)
-% LaTeX Template
-% Version 1.0 (5/1/13)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-% IMPORTANT NOTE:
-% In addition to running BibTeX to compile the reference list from the .bib
-% file, you will need to run MakeIndex to compile the index at the end of the
-% document.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[]{article}
 
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
+\usepackage{pdfpages,enumitem,fancyhdr,
+            cprotect,listings,xcolor,
+            amsmath,amssymb,graphicx,
+            subfigure,hyperref,fancyvrb,
+            tcolorbox,lipsum}
+\usepackage[includeheadfoot,margin=1.15in]{geometry}
 
-\documentclass{tufte-book} % Use the tufte-book class which in turn uses the tufte-common class
+%  Define these variables:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\yourTitle}{[ Title ]}              %
+\newcommand{\yourName}{[ Your Name ]}           %
+\newcommand{\yourEmail}{[ your@email ]}         %
+\newcommand{\classCode}{[ Class Code ]}         %
+\newcommand{\num}{[ Lab or Homework Number ]}   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\hypersetup{colorlinks} % Comment this line if you don't wish to have colored links
+% Define the lstlisting style
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
-\usepackage{microtype} % Improves character and word spacing
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+    }
+    
+\lstset{style=mystyle} 
 
-\usepackage{lipsum} % Inserts dummy text
 
-\usepackage{booktabs} % Better horizontal rules in tables
-
-\usepackage{graphicx} % Needed to insert images into the document
-\graphicspath{{graphics/}} % Sets the default location of pictures
-\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio} % Improves figure scaling
-
-\usepackage{fancyvrb} % Allows customization of verbatim environments
 \fvset{fontsize=\normalsize} % The font size of all verbatim text can be changed here
 
-\newcommand{\hangp}[1]{\makebox[0pt][r]{(}#1\makebox[0pt][l]{)}} % New command to create parentheses around text in tables which take up no horizontal space - this improves column spacing
-\newcommand{\hangstar}{\makebox[0pt][l]{*}} % New command to create asterisks in tables which take up no horizontal space - this improves column spacing
 
-\usepackage{xspace} % Used for printing a trailing space better than using a tilde (~) using the \xspace command
+% Define a new environments called "example", "definition", and "codeblock".
 
-\newcommand{\monthyear}{\ifcase\month\or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi\space\number\year} % A command to print the current month and year
+\newtcolorbox[auto counter, number within=section]{example}[1][]{colback=blue!10!white, colframe=blue!50!black, fonttitle=\bfseries, title=#1, width=0.8\textwidth, center title, box align=center}
+\newtcolorbox[auto counter, number within=section]{definition}[1][]{colback=red!5!white, colframe=red!75!black, fonttitle=\bfseries, title=#1, width=0.8\textwidth, center title, box align=center}
+\newtcolorbox[auto counter, number within=section]{codeblock}[1][]{colback=gray!10!white, colframe=gray!50!black, fonttitle=\bfseries, title=#1, width=0.8\textwidth, center title, box align=center}
 
-\newcommand{\openepigraph}[2]{ % This block sets up a command for printing an epigraph with 2 arguments - the quote and the author
-\begin{fullwidth}
-\sffamily\large
-\begin{doublespace}
-\noindent\allcaps{#1}\\ % The quote
-\noindent\allcaps{#2} % The author
-\end{doublespace}
-\end{fullwidth}
+\newcommand{\examplebox}[2]{
+    \begin{figure}[!ht]
+        \centering
+        \begin{example}[#1]
+            #2
+        \end{example}
+    \end{figure}
 }
 
-\newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage} % Command to insert a blank page
-
-\usepackage{tcolorbox} % Package to create colored boxes
-
-% Define a new environment called "example" with a light blue background
-\newtcolorbox{example}[1][]{colback=blue!10!white, colframe=blue!50!black, fonttitle=\bfseries, title=#1}
-
-\newtcolorbox{definition}[1][]{colback=red!5!white, colframe=red!75!black, fonttitle=\bfseries, title=#1}
-
-\usepackage{listings} % Package to format code
-
-% Define a new environment called "codeblock" with a light gray background
-\newtcolorbox{codeblock}[1][]{colback=gray!10!white, colframe=gray!50!black, fonttitle=\bfseries, title=#1}
-
-% Define settings for the lstlisting package
-\lstset{
-    basicstyle=\ttfamily,
-    keywordstyle=\color{blue},
-    stringstyle=\color{red},
-    commentstyle=\color{green},
-    showstringspaces=false,
-    breaklines=true,
-    frame=single,
-    backgroundcolor=\color{gray!10}
+\newcommand{\definitionbox}[2]{
+    \begin{figure}[!ht]
+        \centering
+        \begin{definition}[#1]
+            #2
+        \end{definition}
+    \end{figure}
 }
 
-\usepackage{makeidx} % Used to generate the index
-\makeindex % Generate the index which is printed at the end of the document
+\newcommand{\codeblockbox}[3]{
+    \begin{figure}[!ht]
+        \centering
+        \begin{codeblock}[#1]
+            \lstinputlisting[language=#2, basicstyle=\ttfamily\normalsize]{#3}
+        \end{codeblock}
+    \end{figure}
+}
 
-%----------------------------------------------------------------------------------------
-%	BOOK META-INFORMATION
-%----------------------------------------------------------------------------------------
-
-\title{Notetaking Template} % Title of the book
-
-\author{Ethan Crawford} % Author
-
-\publisher{Unpublished} % Publisher
-
-%----------------------------------------------------------------------------------------
+\fancyhf{}
+\lhead{\yourName \space | \yourEmail}
+\rhead{\classCode \space | \today \space | \num}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{1.15pt}
+\renewcommand{\footrulewidth}{1.15pt}
+\pagestyle{fancy}
 
 \begin{document}
 
-\frontmatter
+% Title page.
+\begin{titlepage}
+    \centering
 
-\maketitle % Print the title page
+    \vspace*{1cm}
 
-%----------------------------------------------------------------------------------------
-%	COPYRIGHT PAGE
-%----------------------------------------------------------------------------------------
+    % Title and subtitle are enclosed between two rules.
+    \rule{.7\textwidth}{1pt}
 
-\newpage
-\begin{fullwidth}
-~\vfill
-\thispagestyle{empty}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{\baselineskip}
-Copyright \copyright\ \the\year\ \thanklessauthor
+    % Title
+    \vspace{.7\baselineskip}
+    {\huge \textbf{\yourTitle}}
 
-\par\smallcaps{Published by \thanklesspublisher}
+    % Subtitle
+    \vspace*{.5cm}
+    {\Large \classCode}
+    
+    % Closing rule.
+    \rule{.7\textwidth}{1pt}
 
-\par\smallcaps{\url{https://ecrawford.me}}
+    \vspace{1cm}
 
-%\par License information.\index{license}
+    % Set size (large) for the remaining titlepage.
+    \large
 
-\par\textit{Updated \monthyear}
-\end{fullwidth}
+    \begin{figure}[!ht]
+        \large
+        \centering
+        \yourName \\
+        {\normalsize \url{\yourEmail}} \\
+    \end{figure}
 
-%----------------------------------------------------------------------------------------
+    % More authors can be inserted here with additional figures.
 
-\tableofcontents % Print the table of contents
+    \vspace{3cm}
 
-%----------------------------------------------------------------------------------------
+    % Report logo.
+    %\includegraphics[width=.7\textwidth]{assets/example-image}
 
-\listoffigures % Print a list of figures
+    \vfill
 
-%----------------------------------------------------------------------------------------
+    % University and date information at the bottom of the titlepage.
+    % Eastern Washington University \\
+    \rule{.7\textwidth}{1pt}
 
-\listoftables % Print a list of tables
+    \vspace*{.25cm}
 
-%----------------------------------------------------------------------------------------
-%	INTRODUCTION
-%----------------------------------------------------------------------------------------
+    \Large \today
 
-\cleardoublepage
-\chapter{Bayesian Belief Networks}
+    \rule{.7\textwidth}{1pt}
 
-\begin{example}[Example Title]
-    sample text
-\end{example}
+\end{titlepage}
 
-\begin{definition}[Definition Title] 
-    sample text
-\end{definition}
-
-\begin{codeblock}[Code Title]
-\begin{lstlisting}
-sample code{
-    sample.method(sample.getData);
-}
-\end{lstlisting}
-\end{codeblock}
+\noindent\textbf{1:}
 
 
-%----------------------------------------------------------------------------------------
+\examplebox{Example}{\lipsum[1]}
 
-\backmatter
+\definitionbox{Definition}{\lipsum[2]}
 
-%----------------------------------------------------------------------------------------
-%	BIBLIOGRAPHY
-%----------------------------------------------------------------------------------------
-
-\bibliography{bibliography} % Use the bibliography.bib file for the bibliography
-\bibliographystyle{plainnat} % Use the plainnat style of referencing
-
-%----------------------------------------------------------------------------------------
-
-\printindex % Print the index at the very end of the document
+\codeblockbox{Code Block}{python}{assets/code/example.py}
 
 \end{document}
