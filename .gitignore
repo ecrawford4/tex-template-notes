@@ -11,7 +11,7 @@
 *.out
 *.synctex.gz
 *.toc
-
+*.cpt
 
 # ignore extra files
 assets/code/game.py
