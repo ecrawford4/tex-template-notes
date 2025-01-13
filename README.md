@@ -14,7 +14,8 @@ sudo apt install texlive texlive-latex-extra latexmk
 
 ## Statement of Purpose
 
-This repository contains the LaTeX template I use to take notes in school. It is based off the Tufte-Style Book. More information about the template can be found below
+This repository contains the LaTeX template I use to take notes in school. 
+
 
 
 I added three custom environments: one for examples
